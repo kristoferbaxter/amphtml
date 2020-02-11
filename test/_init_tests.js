@@ -118,7 +118,7 @@ class TestConfig {
      * Predicate functions that determine whether to run tests on a platform.
      */
     this.runOnChrome = this.platform.isChrome.bind(this.platform);
-    this.runOnEdge = this.platform.isEdge.bind(this.platform);
+    this.runOnEdgeClassic = this.platform.isEdgeClassic.bind(this.platform);
     this.runOnFirefox = this.platform.isFirefox.bind(this.platform);
     this.runOnSafari = this.platform.isSafari.bind(this.platform);
     this.runOnIos = this.platform.isIos.bind(this.platform);
@@ -134,8 +134,8 @@ class TestConfig {
     return this.skip(this.runOnChrome);
   }
 
-  skipEdge() {
-    return this.skip(this.runOnEdge);
+  skipEdgeClassic() {
+    return this.skip(this.runOnEdgeClassic);
   }
 
   skipFirefox() {

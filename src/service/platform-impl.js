@@ -57,7 +57,7 @@ export class Platform {
       /Safari/i.test(this.navigator_.userAgent) &&
       !this.isChrome() &&
       !this.isIe() &&
-      !this.isEdge() &&
+      !this.isEdgeClassic() &&
       !this.isFirefox() &&
       !this.isOpera()
     );
@@ -71,7 +71,7 @@ export class Platform {
     // Also true for MS Edge :)
     return (
       /Chrome|CriOS/i.test(this.navigator_.userAgent) &&
-      !this.isEdge() &&
+      !this.isEdgeClassic() &&
       !this.isOpera()
     );
   }
@@ -81,7 +81,9 @@ export class Platform {
    * @return {boolean}
    */
   isFirefox() {
-    return /Firefox|FxiOS/i.test(this.navigator_.userAgent) && !this.isEdge();
+    return (
+      /Firefox|FxiOS/i.test(this.navigator_.userAgent) && !this.isEdgeClassic()
+    );
   }
 
   /**
@@ -107,7 +109,7 @@ export class Platform {
    * Whether the current browser is an Edge browser.
    * @return {boolean}
    */
-  isEdge() {
+  isEdgeClassic() {
     return /Edge/i.test(this.navigator_.userAgent);
   }
 
@@ -116,7 +118,7 @@ export class Platform {
    * @return {boolean}
    */
   isWebKit() {
-    return /WebKit/i.test(this.navigator_.userAgent) && !this.isEdge();
+    return /WebKit/i.test(this.navigator_.userAgent) && !this.isEdgeClassic();
   }
 
   /**
@@ -169,7 +171,7 @@ export class Platform {
     if (this.isIe()) {
       return this.evalMajorVersion_(/MSIE\s(\d+)/, 1);
     }
-    if (this.isEdge()) {
+    if (this.isEdgeClassic()) {
       return this.evalMajorVersion_(/Edge\/(\d+)/, 1);
     }
     return 0;

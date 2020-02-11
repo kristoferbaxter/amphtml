@@ -39,7 +39,7 @@ describes.realWin(
     let isChrome = false;
     let isSafari = false;
     let isFirefox = false;
-    let isEdge = false;
+    let isEdgeClassic = false;
     let isEmbedded = false;
     let hasNavigateToCapability = true;
 
@@ -332,7 +332,7 @@ describes.realWin(
       isChrome = false;
       isSafari = false;
       isFirefox = false;
-      isEdge = false;
+      isEdgeClassic = false;
       isEmbedded = false;
       hasNavigateToCapability = true;
 
@@ -350,7 +350,9 @@ describes.realWin(
       env.sandbox.stub(platform, 'isChrome').callsFake(() => isChrome);
       env.sandbox.stub(platform, 'isSafari').callsFake(() => isSafari);
       env.sandbox.stub(platform, 'isFirefox').callsFake(() => isFirefox);
-      env.sandbox.stub(platform, 'isEdge').callsFake(() => isEdge);
+      env.sandbox
+        .stub(platform, 'isEdgeClassic')
+        .callsFake(() => isEdgeClassic);
 
       vsync = Services.vsyncFor(win);
       env.sandbox.stub(vsync, 'runPromise').callsFake((task, state) => {
@@ -376,7 +378,7 @@ describes.realWin(
       });
 
       it('should not upgrade if platform not supported', () => {
-        isEdge = true;
+        isEdgeClassic = true;
         return getAppBanner({iosMeta, androidManifest}).then(banner => {
           expect(banner.implementation_).to.be.instanceof(AmpAppBanner);
           expect(banner.implementation_.upgradeCallback()).to.be.null;
@@ -555,9 +557,9 @@ describes.realWin(
       });
     });
 
-    describe('Windows Edge', () => {
+    describe('Windows Edge Classic', () => {
       beforeEach(() => {
-        isEdge = true;
+        isEdgeClassic = true;
       });
 
       it('Embedded should NOT show banner', () => {

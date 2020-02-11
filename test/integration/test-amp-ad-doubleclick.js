@@ -57,7 +57,7 @@ describe
       this.timeout(20000);
       let iframe;
       let ampAd;
-      const isEdge = navigator.userAgent.match(/Edge/);
+      const isEdgeClassic = navigator.userAgent.match(/Edge/);
       return pollForLayout(fixture.win, 1, 5500)
         .then(() => {
           return poll('frame to be in DOM', () => {
@@ -93,7 +93,7 @@ describe
           // we always check there.
           if (
             context.referrer !== '' ||
-            (navigator.userAgent.match(/Chrome/) && !isEdge)
+            (navigator.userAgent.match(/Chrome/) && !isEdgeClassic)
           ) {
             expect(context.referrer).to.contain(
               'http://localhost:' + location.port
@@ -175,7 +175,7 @@ describe
         .then(() => {
           expect(iframe.getAttribute('width')).to.equal('300');
           expect(iframe.getAttribute('height')).to.equal('250');
-          if (isEdge) {
+          if (isEdgeClassic) {
             // TODO(cramforce): Get this to pass in Edge
             return;
           }
@@ -189,7 +189,7 @@ describe
           );
         })
         .then(creativeId => {
-          if (isEdge) {
+          if (isEdgeClassic) {
             // TODO(cramforce): Get this to pass in Edge
             return;
           }

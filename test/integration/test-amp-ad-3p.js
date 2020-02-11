@@ -129,7 +129,7 @@ describe.configure().run('amp-ad 3P', () => {
         // Nevertheless this only happens in test. In real world AMP will not
         // in srcdoc iframe.
         expect(context.sourceUrl).to.equal(
-          platform.isEdge()
+          platform.isEdgeClassic()
             ? 'http://localhost:9876/context.html'
             : 'about:srcdoc'
         );

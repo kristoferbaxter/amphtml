@@ -24,7 +24,7 @@ describe('Platform', () => {
   let isFirefox;
   let isOpera;
   let isIe;
-  let isEdge;
+  let isEdgeClassic;
   let isWebKit;
   let isStandalone;
   let majorVersion;
@@ -40,7 +40,7 @@ describe('Platform', () => {
     isFirefox = false;
     isOpera = false;
     isIe = false;
-    isEdge = false;
+    isEdgeClassic = false;
     isWebKit = false;
     isStandalone = false;
     majorVersion = 0;
@@ -58,7 +58,7 @@ describe('Platform', () => {
     expect(platform.isFirefox()).to.equal(isFirefox);
     expect(platform.isOpera()).to.equal(isOpera);
     expect(platform.isIe()).to.equal(isIe);
-    expect(platform.isEdge()).to.equal(isEdge);
+    expect(platform.isEdgeClassic()).to.equal(isEdgeClassic);
     expect(platform.isWebKit()).to.equal(isWebKit);
     expect(platform.getMajorVersion()).to.equal(majorVersion);
     expect(platform.getIosVersionString()).to.equal(iosVersion);
@@ -308,8 +308,8 @@ describe('Platform', () => {
     testStandalone(userAgent, isStandalone);
   });
 
-  it('Edge', () => {
-    isEdge = true;
+  it('Edge Classic', () => {
+    isEdgeClassic = true;
     majorVersion = 12;
     userAgent =
       'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36' +

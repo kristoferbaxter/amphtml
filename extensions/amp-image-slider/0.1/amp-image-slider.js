@@ -98,7 +98,7 @@ export class AmpImageSlider extends AMP.BaseElement {
     this.gestures_ = null;
 
     /** @private {boolean} */
-    this.isEdge_ = Services.platformFor(this.win).isEdge();
+    this.isEdgeClassic_ = Services.platformFor(this.win).isEdgeClassic();
 
     /** @public {boolean} */
     this.isEventRegistered = false; // for test purpose
@@ -191,7 +191,7 @@ export class AmpImageSlider extends AMP.BaseElement {
         this.updatePositions_(initialPosition);
       }
       // Prevent Edge horizontal swipe for go back/forward
-      if (this.isEdge_) {
+      if (this.isEdgeClassic_) {
         setStyles(this.element, {
           'touch-action': 'pan-y', // allow browser only default y behavior
         });
