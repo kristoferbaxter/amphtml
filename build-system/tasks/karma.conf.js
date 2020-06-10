@@ -85,7 +85,7 @@ persistentCache.gc(
 module.exports = {
   frameworks: [
     'fixture',
-    'browserify',
+    // 'browserify',
     'mocha',
     'sinon-chai',
     'chai',
