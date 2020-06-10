@@ -188,14 +188,15 @@ class RuntimeTestConfig {
     this.client.mocha.grep = !!argv.grep;
     this.client.verboseLogging = !!argv.verbose || !!argv.v;
     this.client.captureConsole = !!argv.verbose || !!argv.v || !!argv.files;
-    this.browserify.configure = function (bundle) {
-      bundle.on('prebundle', function () {
-        log(
-          green('Transforming tests with'),
-          cyan('browserify') + green('...')
-        );
-      });
-    };
+    // this.browserify = null;
+    // this.browserify.configure = function (bundle) {
+    //   bundle.on('prebundle', function () {
+    //     log(
+    //       green('Transforming tests with'),
+    //       cyan('browserify') + green('...')
+    //     );
+    //   });
+    // };
 
     // c.client is available in test browser via window.parent.karma.config
     this.client.amp = {

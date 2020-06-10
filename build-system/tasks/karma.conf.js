@@ -94,10 +94,10 @@ module.exports = {
 
   preprocessors: {
     './test/fixtures/*.html': ['html2js'],
-    './test/**/*.js': ['browserify'],
-    './ads/**/test/test-*.js': ['browserify'],
-    './extensions/**/test/**/*.js': ['browserify'],
-    './testing/**/*.js': ['browserify'],
+    // './test/**/*.js': ['browserify'],
+    // './ads/**/test/test-*.js': ['browserify'],
+    // './extensions/**/test/**/*.js': ['browserify'],
+    // './testing/**/*.js': ['browserify'],
   },
 
   // TODO(rsimha, #15510): Sauce labs on Safari doesn't reliably support
@@ -105,17 +105,17 @@ module.exports = {
   // Details: https://support.saucelabs.com/hc/en-us/articles/115010079868
   hostname: 'localhost',
 
-  browserify: {
-    watch: true,
-    debug: true,
-    fast: true,
-    basedir: __dirname + '/../../',
-    transform: [['babelify', {caller: {name: 'test'}, global: true}]],
-    // Prevent "cannot find module" errors on Travis. See #14166.
-    bundleDelay: isTravisBuild() ? 5000 : 1200,
+  // browserify: {
+  //   watch: true,
+  //   debug: true,
+  //   fast: true,
+  //   basedir: __dirname + '/../../',
+  //   transform: [['babelify', {caller: {name: 'test'}, global: true}]],
+  //   // Prevent "cannot find module" errors on Travis. See #14166.
+  //   bundleDelay: isTravisBuild() ? 5000 : 1200,
 
-    persistentCache,
-  },
+  //   persistentCache,
+  // },
 
   reporters: ['super-dots', 'karmaSimpleReporter'],
 
@@ -327,7 +327,7 @@ module.exports = {
   // So we instantly have all the custom server endpoints available
   beforeMiddleware: ['custom'],
   plugins: [
-    'karma-browserify',
+    // 'karma-browserify',
     'karma-chai',
     'karma-chrome-launcher',
     'karma-edge-launcher',
